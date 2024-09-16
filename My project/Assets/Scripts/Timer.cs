@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Timer : MonoBehaviour
 
 {
+    [Header("Score Text")]
+    public TextMeshProUGUI scoreText;
+    public int score = 0;
+
     [Header("Component")]
     public TextMeshProUGUI timerText;
 
@@ -37,27 +42,48 @@ public class Timer : MonoBehaviour
         {
             if (currentTime > 2.5 && currentTime < 3.5)
             {
+                Add300();
                 Debug.Log("Perfect");
             }
             else if (currentTime > 1 && currentTime <= 2.5)
             {
+                Add100();
                 Debug.Log("Good");
             }
             else if (currentTime >= 3.5 && currentTime < 5)
             {
+                Add100();
                 Debug.Log("Good");
             }
             else
             {
-                Debug.Log("Miss");
+                Add30();
+                Debug.Log("Okay");
             }
         }
     }
+    public void Add300()
+    {
+        score += 150;
+        scoreText.text = score.ToString();
+    }
 
+    public void Add100()
+    {
+        score += 50;
+        scoreText.text = score.ToString();
+    }
+
+    public void Add30()
+    {
+        score += 15;
+        scoreText.text = score.ToString();
+    }
 
     // Update is called once per frame
     void Update()
     {
+
         currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
 
         if (hasLimit && ((countDown && currentTime <= timerLimit) || (!countDown && currentTime >= timerLimit)))
