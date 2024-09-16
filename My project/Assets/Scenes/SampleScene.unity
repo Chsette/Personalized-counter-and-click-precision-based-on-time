@@ -619,8 +619,8 @@ MonoBehaviour:
   scoreText: {fileID: 1899160678}
   score: 0
   timerText: {fileID: 1115262741}
-  currentTime: 0
-  countDown: 0
+  currentTime: 150
+  countDown: 1
   hasLimit: 1
   timerLimit: 6
   hasFormat: 1
