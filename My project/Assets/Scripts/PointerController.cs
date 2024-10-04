@@ -10,7 +10,6 @@ public class PointerController : MonoBehaviour
     public RectTransform safeZone;
     public float moveSpeed = 100f;
 
-    private float direction;
     private RectTransform pointerTransform;
     private Vector3 targetPosition;
 
@@ -32,12 +31,10 @@ public class PointerController : MonoBehaviour
         if (Vector3.Distance(pointerTransform.position, pointA.position) < 0.1f)
         {
             targetPosition = pointB.position;
-            direction = 1f;
         }
         else if (Vector3.Distance(pointerTransform.position, pointB.position) < 0.1f)
         {
             targetPosition = pointA.position;
-            direction = -1f;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
